@@ -1,34 +1,91 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
-import { Link } from 'react-router-dom';
-import styles from './Login.module.scss'
+import { Link, useNavigate } from 'react-router-dom';
+import styles from './Login.module.scss';
 
 const Login = () => {
   const [errorHandler, setErrorHandler] = useState('');
+  const [loginData, setLoginData] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
-  const onLoginFormSubmitHandler = async (event) => { }
+  const onInputChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setLoginData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const onLoginFormSubmitHandler = async (event) => {
+    event.preventDefault();
+
+    if (!loginData.email || !loginData.password) {
+      setErrorHandler('Please fill in all fields');
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:5000/users?email=${loginData.email}`);
+      const users = await res.json();
+
+      if (users.length === 0) {
+        setErrorHandler('User not found');
+        return;
+      }
+
+      const user = users[0];
+
+      if (user.password !== loginData.password) {
+        setErrorHandler('Incorrect password');
+        return;
+      }
+
+      localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('username', user.username);
+
+      navigate('/');
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+      setErrorHandler('Login failed. Please try again.');
+    }
+  };
 
   return (
     <div className={styles.form_container}>
       <form className={styles.form} onSubmit={onLoginFormSubmitHandler}>
         <h2>Sign In</h2>
         <div className={styles.errorMsg}>{errorHandler}</div>
+
         <label htmlFor="email">Email</label>
         <div className={styles.input_content}>
           <EmailIcon className={styles.icons} />
-          <input id="email" type="text" name="email" placeholder="Enter your email" />
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            value={loginData.email}
+            onChange={onInputChangeHandler}
+          />
         </div>
-        <label htmlFor="pass">Password</label>
+
+        <label htmlFor="password">Password</label>
         <div className={styles.input_content}>
           <LockIcon className={styles.icons} />
-          <input id="pass" type="password" name="password" placeholder="Enter your password" />
+          <input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            value={loginData.password}
+            onChange={onInputChangeHandler}
+          />
         </div>
-        <button>Sign In</button>
-        <p> Don't have an account? <Link to="/register">Register</Link></p>
+
+        <button type="submit">Sign In</button>
+        <p>Don't have an account? <Link to="/register">Register</Link></p>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

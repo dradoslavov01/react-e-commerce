@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import styles from './NavigationBar.module.scss'
 
 const NavigationBar = (props) => {
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+  const loginOutHandler = () => {
+    localStorage.clear()
+    window.location.reload();
+  }
+
   return (
     <nav className={styles.navbar}>
       <h1>eCommerce</h1>
@@ -22,7 +29,7 @@ const NavigationBar = (props) => {
         <li>
           <Link to="/contacts">Contacts</Link>
         </li>
-        {props.isLoggedIn
+        {isLoggedIn
           ? (<>
             <li className={styles.cart_container}>
               {props.cart.length > 0
@@ -43,7 +50,7 @@ const NavigationBar = (props) => {
               <Link to="/profile" className={styles.user}>Profile</Link>
             </li>
             <li>
-              <Link to="/logout" className={styles.user} onClick={() => { window.location.reload(); localStorage.clear() }}>Logout</Link>
+              <Link to="/logout" className={styles.user} onClick={loginOutHandler}>Logout</Link>
             </li>
           </>
           )

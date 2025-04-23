@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "28ef",
+      "username": "dani",
+      "email": "dani@gmail.com",
+      "password": "dani123"
+    },
+    {
+      "id": "58fe",
+      "username": "dani2",
+      "email": "dani2@gmail.com",
+      "password": "dani123"
+    },
+    {
+      "id": "2a30",
+      "username": "dani3",
+      "email": "dani3@gmail.com",
+      "password": "dani123dani"
+    }
+  ]
+}
