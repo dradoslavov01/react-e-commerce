@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { NavigationBar } from './components';
+import { Route, Routes } from 'react-router-dom';
+import { NavigationBar, Login } from './components';
 import './App.css';
 
 function App() {
@@ -10,6 +11,9 @@ function App() {
   return (
     <div className="App">
       <NavigationBar cart={cart} favoriteItems={favoriteItems} isLoggedIn={isLoggedIn} />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </div>
   );
 }
