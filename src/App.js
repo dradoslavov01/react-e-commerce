@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { NavigationBar, Login } from './components';
+import { NavigationBar, Login, Register } from './components';
 import './App.css';
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
       <NavigationBar cart={cart} favoriteItems={favoriteItems} isLoggedIn={isLoggedIn} />
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );
