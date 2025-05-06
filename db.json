@@ -1,22 +1,117 @@
 {
   "users": [
     {
-      "id": "28ef",
-      "username": "dani",
-      "email": "dani@gmail.com",
-      "password": "dani123"
-    },
-    {
-      "id": "58fe",
-      "username": "dani2",
-      "email": "dani2@gmail.com",
-      "password": "dani123"
-    },
-    {
-      "id": "2a30",
-      "username": "dani3",
-      "email": "dani3@gmail.com",
+      "id": "ad35",
+      "username": "dani11",
+      "email": "dani11@gmail.com",
       "password": "dani123dani"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "title": "Casual T-Shirt",
+      "image": "https://images.unsplash.com/photo-1600328759671-85927887458d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dCUyMHNoaXJ0fGVufDB8fDB8fHww",
+      "price": 19.99,
+      "category": "clothes"
+    },
+    {
+      "id": 2,
+      "title": "Denim Jacket",
+      "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=3604&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 59.99,
+      "category": "clothes"
+    },
+    {
+      "id": 3,
+      "title": "Slim Fit Jeans",
+      "image": "https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 39.99,
+      "category": "clothes"
+    },
+    {
+      "id": 4,
+      "title": "Hoodie",
+      "image": "https://images.unsplash.com/photo-1615397587950-3cbb55f95b77?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 29.99,
+      "category": "clothes"
+    },
+    {
+      "id": 5,
+      "title": "Running Shoes",
+      "image": "https://images.unsplash.com/photo-1562183241-b937e95585b6?q=80&w=3465&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 49.99,
+      "category": "shoes"
+    },
+    {
+      "id": 6,
+      "title": "Leather Boots",
+      "image": "https://images.unsplash.com/photo-1599012307605-23a0ebe4d321?q=80&w=3072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 79.99,
+      "category": "shoes"
+    },
+    {
+      "id": 7,
+      "title": "White Sneakers",
+      "image": "https://images.unsplash.com/photo-1597350584914-55bb62285896?q=80&w=2817&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 39.99,
+      "category": "shoes"
+    },
+    {
+      "id": 8,
+      "title": "High Heels",
+      "image": "https://images.unsplash.com/photo-1573100925118-870b8efc799d?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 69.99,
+      "category": "shoes"
+    },
+    {
+      "id": 9,
+      "title": "Baseball Cap",
+      "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=3648&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 14.99,
+      "category": "hats"
+    },
+    {
+      "id": 10,
+      "title": "Beanie",
+      "image": "https://plus.unsplash.com/premium_photo-1695603437311-fec2f916a0f5?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 12.99,
+      "category": "hats"
+    },
+    {
+      "id": 11,
+      "title": "Bucket Hat",
+      "image": "https://images.unsplash.com/photo-1624518681328-bc59eefa1ce4?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 17.99,
+      "category": "hats"
+    },
+    {
+      "id": 12,
+      "title": "Fedora",
+      "image": "https://plus.unsplash.com/premium_photo-1675989087109-f8a00bfea7d1?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 24.99,
+      "category": "hats"
+    },
+    {
+      "id": 13,
+      "title": "Smart Watch",
+      "image": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=3376&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 89.99,
+      "category": "watches"
+    },
+    {
+      "id": 14,
+      "title": "Analog Watch",
+      "image": "https://images.unsplash.com/photo-1659972325161-518bc57f14e8?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 45.99,
+      "category": "watches"
+    },
+    {
+      "id": 15,
+      "title": "Digital Sport Watch",
+      "image": "https://images.unsplash.com/photo-1617625802912-cde586faf331?q=80&w=3732&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 34.99,
+      "category": "watches"
     }
   ]
 }
