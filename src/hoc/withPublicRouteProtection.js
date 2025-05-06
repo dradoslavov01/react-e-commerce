@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const withPublicRouteProtection = (WrappedComponent) => {
   return (props) => {
     const navigate = useNavigate();
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
 
     useEffect(() => {
       if (isLoggedIn) {
