@@ -17,15 +17,6 @@ const NavigationBar = (props) => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li className={styles.dropdown}>
-          <a>Category</a>
-          <div className={styles.dropdown_content}>
-            <Link to="/category/clothes">Clothes</Link>
-            <Link to="/category/shoes">Shoes</Link>
-            <Link to="/category/hats">Hats</Link>
-            <Link to="/category/watches">Watches</Link>
-          </div>
-        </li>
         <li>
           <Link to="/contacts">Contacts</Link>
         </li>
@@ -39,15 +30,6 @@ const NavigationBar = (props) => {
                 : ''
               }
               <Link to="/cart" className={styles.user}>Cart</Link>
-            </li>
-            <li className={styles.profile_container}>
-              {props.favoriteItems.length > 0
-                ? (
-                  <span className={styles.favItems_counter}>{props.favoriteItems.length}</span>
-                )
-                : ''
-              }
-              <Link to="/profile" className={styles.user}>Profile</Link>
             </li>
             <li>
               <Link to="/logout" className={styles.user} onClick={loginOutHandler}>Logout</Link>
