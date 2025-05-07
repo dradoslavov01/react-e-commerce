@@ -14,61 +14,52 @@ const Register = () => {
     rePass: '',
   });
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  const onInputChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setUserData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+  const handleInputChange = ({ target: { name, value } }) => {
+    setUserData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const onRegisterSubmitHandler = async (event) => {
-    event.preventDefault();
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-    if (!userData.username || !userData.email || !userData.password || !userData.rePass) {
+    const { username, email, password, rePass } = userData;
+    if (!username || !email || !password || !rePass) {
       setErrorHandler('Please fill in all fields');
       return;
     }
 
-    if (userData.password !== userData.rePass) {
+    if (password !== rePass) {
       setErrorHandler('Passwords do not match');
       return;
     }
-
+    
+    setErrorHandler('');
     try {
       const response = await fetch('http://localhost:5000/users', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: userData.username,
-          email: userData.email,
-          password: userData.password,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, email, password }),
       });
 
-      if (!response.ok) {
-        throw new Error('Registration failed');
-      }
+      if (!response.ok) throw new Error('Registration failed');
 
       const result = await response.json();
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('username', result.username);
 
-      setErrorHandler('');
-      navigate('/'); 
+      navigate('/');
       window.location.reload();
     } catch (error) {
       setErrorHandler(error.message || 'Something went wrong. Please try again.');
     }
   };
 
+  const isFormValid = userData.username && userData.email && userData.password && userData.rePass && userData.password === userData.rePass;
+
   return (
     <div className={styles.form_container}>
-      <form className={styles.form} onSubmit={onRegisterSubmitHandler}>
+      <form className={styles.form} onSubmit={handleFormSubmit}>
         <h2>Create an account</h2>
         {errorHandler && <div className={styles.errorMsg}>{errorHandler}</div>}
 
@@ -81,7 +72,7 @@ const Register = () => {
             name="username"
             placeholder="Enter your username"
             value={userData.username}
-            onChange={onInputChangeHandler}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -94,7 +85,7 @@ const Register = () => {
             name="email"
             placeholder="Enter your email"
             value={userData.email}
-            onChange={onInputChangeHandler}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -107,7 +98,7 @@ const Register = () => {
             name="password"
             placeholder="Enter your password"
             value={userData.password}
-            onChange={onInputChangeHandler}
+            onChange={handleInputChange}
           />
         </div>
 
@@ -120,11 +111,13 @@ const Register = () => {
             name="rePass"
             placeholder="Confirm your password"
             value={userData.rePass}
-            onChange={onInputChangeHandler}
+            onChange={handleInputChange}
           />
         </div>
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" disabled={!isFormValid}>
+          Sign Up
+        </button>
         <p>Already have an account? <Link to="/login">Login</Link></p>
       </form>
     </div>

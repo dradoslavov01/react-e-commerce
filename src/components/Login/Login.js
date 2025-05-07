@@ -9,21 +9,22 @@ const Login = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const navigate = useNavigate();
 
-  const onInputChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setLoginData(prev => ({ ...prev, [name]: value }));
+  const onInputChangeHandler = ({ target: { name, value } }) => {
+    setLoginData(prevState => ({ ...prevState, [name]: value }));
   };
 
   const onLoginFormSubmitHandler = async (event) => {
     event.preventDefault();
 
-    if (!loginData.email || !loginData.password) {
+    const { email, password } = loginData;
+
+    if (!email || !password) {
       setErrorHandler('Please fill in all fields');
       return;
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/users?email=${loginData.email}`);
+      const res = await fetch(`http://localhost:5000/users?email=${email}`);
       const users = await res.json();
 
       if (users.length === 0) {
@@ -33,7 +34,7 @@ const Login = () => {
 
       const user = users[0];
 
-      if (user.password !== loginData.password) {
+      if (user.password !== password) {
         setErrorHandler('Incorrect password');
         return;
       }
@@ -41,19 +42,21 @@ const Login = () => {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('username', user.username);
 
+      setErrorHandler('');
       navigate('/');
-      window.location.reload();
     } catch (err) {
       console.error(err);
       setErrorHandler('Login failed. Please try again.');
     }
   };
 
+  const isFormValid = loginData.email && loginData.password;
+
   return (
     <div className={styles.form_container}>
       <form className={styles.form} onSubmit={onLoginFormSubmitHandler}>
         <h2>Sign In</h2>
-        <div className={styles.errorMsg}>{errorHandler}</div>
+        {errorHandler && <div className={styles.errorMsg}>{errorHandler}</div>}
 
         <label htmlFor="email">Email</label>
         <div className={styles.input_content}>
@@ -81,7 +84,7 @@ const Login = () => {
           />
         </div>
 
-        <button type="submit">Sign In</button>
+        <button type="submit" disabled={!isFormValid}>Sign In</button>
         <p>Don't have an account? <Link to="/register">Register</Link></p>
       </form>
     </div>

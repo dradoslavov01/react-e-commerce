@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { NavigationBar, Login, Register, Items, Contacts } from './components';
+import { NavigationBar, Login, Register, Items, Contacts, Cart } from './components';
 import withPublicRouteProtection from './hoc/withPublicRouteProtection';
 import './App.css';
 
@@ -25,9 +25,6 @@ function App() {
     fetchItems();
   }, []);
 
-  console.log(cart);
-  
-
   return (
     <div className="App">
       <NavigationBar cart={cart} />
@@ -36,6 +33,7 @@ function App() {
         <Route path="/login" element={<ProtectedLogin />} />
         <Route path="/register" element={<ProtectedRegister />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
       </Routes>
     </div>
   );
