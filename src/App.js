@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { NavigationBar, Login, Register, Items } from './components';
+import { NavigationBar, Login, Register, Items, Contacts } from './components';
 import withPublicRouteProtection from './hoc/withPublicRouteProtection';
 import './App.css';
 
@@ -33,6 +33,7 @@ function App() {
         <Route path="/" element={<Items data={items} />} />
         <Route path="/login" element={<ProtectedLogin />} />
         <Route path="/register" element={<ProtectedRegister />} />
+        <Route path="/contacts" element={<Contacts />} />
       </Routes>
     </div>
   );
