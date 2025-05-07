@@ -1,10 +1,19 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { addToCart } from '../../utils';
 import styles from './Items.module.scss'
 
-const Items = ({ data }) => {
+const Items = ({ data, setCart }) => {
   const isLoggedIn = localStorage.getItem('isLoggedIn');
   const navigate = useNavigate();
+
+  const handleAddToCart = (item) => {
+    if (isLoggedIn) {
+      addToCart(item, setCart);
+    } else {
+      navigate('/login');
+    }
+  }
 
   return (
     <div className={styles.items_content}>
@@ -15,10 +24,8 @@ const Items = ({ data }) => {
               <img src={item.image} alt="item_img" />
               <h5>{item.title}</h5>
               <p>{item.price}</p>
-              {isLoggedIn
-                ? <button onClick={() => { }}>Add to cart</button>
-                : <button onClick={() => navigate('/login')}>Add to cart</button>
-              }
+              <button onClick={() => handleAddToCart(item)}>Add to cart</button>
+
             </section>
           )
         })

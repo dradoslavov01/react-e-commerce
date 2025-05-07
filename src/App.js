@@ -7,7 +7,6 @@ import './App.css';
 function App() {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
-  const [favoriteItems, setFavoriteItems] = useState([]);
 
   const ProtectedLogin = withPublicRouteProtection(Login);
   const ProtectedRegister = withPublicRouteProtection(Register);
@@ -26,11 +25,14 @@ function App() {
     fetchItems();
   }, []);
 
+  console.log(cart);
+  
+
   return (
     <div className="App">
-      <NavigationBar cart={cart} favoriteItems={favoriteItems} />
+      <NavigationBar cart={cart} />
       <Routes>
-        <Route path="/" element={<Items data={items} />} />
+        <Route path="/" element={<Items data={items} setCart={setCart} />} />
         <Route path="/login" element={<ProtectedLogin />} />
         <Route path="/register" element={<ProtectedRegister />} />
         <Route path="/contacts" element={<Contacts />} />
