@@ -44,6 +44,7 @@ const Login = () => {
 
       setErrorHandler('');
       navigate('/');
+      window.location.reload();
     } catch (err) {
       console.error(err);
       setErrorHandler('Login failed. Please try again.');
